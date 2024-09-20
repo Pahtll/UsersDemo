@@ -13,6 +13,6 @@ public class UsersDemoDbContext(
 		
 		base.OnModelCreating(modelBuilder);
 	}
-	
+
 	public DbSet<User> Users { get; set; }
 }
