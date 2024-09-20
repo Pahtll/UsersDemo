@@ -1,0 +1,7 @@
+@UsersDemo.API_HostAddress = http://localhost:5290
+
+GET {{UsersDemo.API_HostAddress}}/users/
+Accept: application/json
+
+GET {{UsersDemo.API_HostAddress}}/users/1
+###

@@ -1,0 +1,26 @@
+﻿services:
+  usersdemo.api:
+    image: usersdemo.api
+    build:
+      context: .
+      dockerfile: UsersDemo.API/Dockerfile
+    ports:
+      - "5290:8080"
+    environment:
+        ASPNETCORE_ENVIRONMENT: Development
+        ConnectionStrings__UsersDemo: Host=plsql;Port=5432;Database=usersdemo;Username=postgres;Password=password
+    depends_on:
+        - plsql
+  plsql:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: usersdemo
+    volumes:
+      - plsql-data:/var/lib/postgresql/data
+
+volumes:
+    plsql-data:
